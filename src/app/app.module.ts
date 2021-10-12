@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-// import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-// import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
-import { DBService } from './services/db.service';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { environment } from 'src/environments/environment';
+
+// Firebase
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+// Services
+import { DBService } from './services/db.service';
+import { AuthService } from './services/auth.service';
+
+// Components
 import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
@@ -23,11 +27,13 @@ import { UsersComponent } from './components/users/users.component';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
-    // provideFirebaseApp(() => initializeApp(environment.firebase)),
-    // provideFirestore(() => getFirestore()),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
-  providers: [DBService],
+  providers: [
+    AuthService,
+    DBService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
