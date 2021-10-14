@@ -8,11 +8,20 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class DBService {
+
   usersCollection?: AngularFirestoreCollection<User>;
   users: Observable<User[]>;
 
-  constructor(public afs: AngularFirestore) {
-    this.users = this.afs.collection<User>("users").valueChanges();
+  constructor(public db: AngularFirestore) {
+    this.users = this.db.collection<User>("users").valueChanges();
+  }
+
+  async userExist(uid: string) {
+    const userDoc = await this.db.collection('users').doc(uid).get();
+    if (userDoc) {
+      return true;
+    }
+    return false;
   }
 
   getUsers() {

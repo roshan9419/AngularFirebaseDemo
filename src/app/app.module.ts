@@ -17,11 +17,13 @@ import { AuthService } from './services/auth.service';
 
 // Components
 import { UsersComponent } from './components/users/users.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent
+    UsersComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

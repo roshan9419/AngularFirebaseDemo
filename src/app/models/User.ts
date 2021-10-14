@@ -1,5 +1,10 @@
 export interface User {
     userId?: string,
     name?: string,
-    age?: number
+    email?: string,
+    photoUrl?: string,
+    registeredDate?: Date,
+    occupation?: string,
+    aboutMe?: string,
+    githubUsername?: string
 }
