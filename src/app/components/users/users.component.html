@@ -1,5 +1,8 @@
 <div *ngIf="isLoadingData;">Awaiting data...</div>
 
 <div *ngFor="let user of users; index as i">
-    <h6>[{{user.userId}}] => {{user.name}}}</h6>
+    <span style="display: inline-flex;">
+        <h6>[{{user.userId}}] => {{user.name}}</h6>
+        <button class="btn btn-danger btn-sm" (click)="onUserDelete(user.userId)">Delete</button>
+    </span>
 </div>

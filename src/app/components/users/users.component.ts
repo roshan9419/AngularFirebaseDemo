@@ -22,4 +22,13 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  async onUserDelete(userId?: string) {
+    try {
+      this.dbService.deleteUser(userId!);
+    } catch (error) {
+      alert("Failed to delete the user");
+      console.log(error);
+    }
+  }
+
 }

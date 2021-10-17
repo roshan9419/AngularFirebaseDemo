@@ -26,4 +26,9 @@ export class AuthService {
   }
 
   signOut() {}
+
+  async getUserId() {
+    const user = await this.auth.currentUser;
+    return user?.uid;
+  }
 }

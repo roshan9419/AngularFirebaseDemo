@@ -27,4 +27,14 @@ export class DBService {
   getUsers() {
     return this.users;
   }
+
+  async saveUser(user: User) {
+    const userDocRef = this.db.collection('users').ref.doc();
+    user.userId = userDocRef.id;
+    await userDocRef.set(user);
+  }
+
+  async deleteUser(userId: string) {
+    await this.db.collection('users').doc(userId).delete();
+  }
 }
